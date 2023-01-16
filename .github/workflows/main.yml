@@ -10,13 +10,16 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.ref }}
+          token: ${{ github.token }}
       - name: Upload file1
         uses: softprops/action-gh-release@v1
         with:
           files: file1
           tag_name: ${{ github.ref }}
+          token: ${{ github.token }}
       - name: Upload file2
         uses: softprops/action-gh-release@v1
         with:
           files: file2
           tag_name: ${{ github.ref }}
+          token: ${{ github.token }}
