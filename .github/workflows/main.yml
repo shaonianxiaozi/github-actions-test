@@ -9,7 +9,6 @@ jobs:
       - name: Get time 
         run: echo "time=$(date +"%Y%m%d")" >> $GITHUB_ENV
       - name: Create empty release
-        id: release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.time }}
@@ -17,3 +16,10 @@ jobs:
           token: ${{ secrets.GH_TOKEN  }}
           target_commitish: main
           draft: false
+      - name: Create empty release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.time }}
+          token: ${{ secrets.GH_TOKEN  }}
+          draft: false
+          files: file1
