@@ -6,21 +6,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Get time 
+        run: echo 'time=$(date +"%Y%m%d")' >> $GITHUB_ENV
       - name: Create empty release
+        id: release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload file1
-        uses: softprops/action-gh-release@v1
-        with:
-          files: file1
-          tag_name: ${{ github.ref }}
-          token: ${{ github.token }}
-      - name: Upload file2
-        uses: softprops/action-gh-release@v1
-        with:
-          files: file2
-          tag_name: ${{ github.ref }}
-          token: ${{ github.token }}
+          tag_name: ${{ env.time }}
+          body: "Nothing"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target_commitish: master
+          draft: false
