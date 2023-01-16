@@ -10,7 +10,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.ref }}
-          token: ${{ github.token }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload file1
         uses: softprops/action-gh-release@v1
         with:
