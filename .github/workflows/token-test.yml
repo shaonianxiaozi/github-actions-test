@@ -1,0 +1,13 @@
+name: Build
+on: [push,workflow_dispatch]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run
+        run: |
+          if [ -n ${{ github.token }} ]; then
+            echo yes
+          else 
+            echo no
+          fi
