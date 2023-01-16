@@ -23,7 +23,7 @@ jobs:
         with:
           body: "Token"
           token: ${{ secrets.GH_TOKEN  }}
-          tag_name: ${{ env.time }}
+          tag_name: "Token"
           files: |
             file1
             file2
