@@ -14,12 +14,8 @@ jobs:
           tag_name: ${{ env.time }}
           body: "Nothing"
           token: ${{ secrets.GH_TOKEN  }}
-          target_commitish: main
-          draft: false
-      - name: Create empty release
+      - name: Upload
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ env.time }}
           token: ${{ secrets.GH_TOKEN  }}
-          draft: false
           files: file1
