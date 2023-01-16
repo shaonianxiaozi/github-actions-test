@@ -1,5 +1,5 @@
-name: Build
-on: [push,workflow_dispatch]
+name: Token
+on: [workflow_dispatch]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -7,23 +7,26 @@ jobs:
       - name: Run 1
         run: |
           if [ -n ${{ github.token }} ]; then
-            echo ${{ github.token }} > file1
+            echo yes
           else 
             echo no
           fi
       - name: Run 2
         run: |
           if [ -n ${{ secrets.GITHUB_TOKEN }} ]; then
-            echo ${{ secrets.GITHUB_TOKEN }} > file2
+            echo yes
           else 
             echo no
           fi
-      - name: Upload
-        uses: softprops/action-gh-release@v1
-        with:
-          body: "Token"
-          token: ${{ secrets.GH_TOKEN  }}
-          tag_name: "Token"
-          files: |
-            file1
-            file2
+      - name: Run 3
+        run: |
+          if [ ${{ github.token }} = ${{ secrets.GITHUB_TOKEN }} ]; then
+            echo yes
+            if [ ${{ github.token }} = ${{ secrets.GH_TOKEN }} ]; then
+              echo yes
+            else
+              echo no
+            fi
+          else 
+            echo no
+          fi
