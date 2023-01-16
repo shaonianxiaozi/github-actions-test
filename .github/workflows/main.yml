@@ -1,0 +1,16 @@
+name: Test
+on: [push,workflow_dispatch]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Upload file1
+        uses: softprops/action-gh-release@v1
+        with:
+          files: file1
+      - name: Upload file2
+        uses: softprops/action-gh-release@v1
+        with:
+          files: file2
