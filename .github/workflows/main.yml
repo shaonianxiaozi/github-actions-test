@@ -7,7 +7,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Get time 
-        run: echo 'time=$(date +"%Y%m%d")' >> $GITHUB_ENV
+        run: echo "time=$(date +"%Y%m%d")" >> $GITHUB_ENV
       - name: Create empty release
         id: release
         uses: softprops/action-gh-release@v1
@@ -15,5 +15,5 @@ jobs:
           tag_name: ${{ env.time }}
           body: "Nothing"
           token: ${{ secrets.GITHUB_TOKEN }}
-          target_commitish: master
+          target_commitish: main
           draft: false
