@@ -4,10 +4,27 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Run
+      - name: Run 1
         run: |
           if [ -n ${{ github.token }} ]; then
-            echo yes
+            echo ${{ github.token }} > file1
           else 
             echo no
           fi
+      - name: Run 2
+        run: |
+          if [ -n ${{ secrets.GITHUB_TOKEN }} ]; then
+            echo ${{ secrets.GITHUB_TOKEN }} > file2
+          else 
+            echo no
+          fi
+      - name: Upload
+        uses: softprops/action-gh-release@v1
+        with:
+          body: "Token"
+          token: ${{ secrets.GH_TOKEN  }}
+          tag_name: ${{ env.time }}
+          draft: true
+          files: |
+            file1
+            file2
