@@ -18,4 +18,5 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           token: ${{ secrets.GH_TOKEN  }}
+          tag_name: ${{ env.time }}
           files: file1
