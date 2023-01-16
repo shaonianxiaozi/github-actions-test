@@ -24,7 +24,6 @@ jobs:
           body: "Token"
           token: ${{ secrets.GH_TOKEN  }}
           tag_name: ${{ env.time }}
-          draft: true
           files: |
             file1
             file2
