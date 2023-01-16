@@ -14,6 +14,6 @@ jobs:
         with:
           tag_name: ${{ env.time }}
           body: "Nothing"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ github.token }}
           target_commitish: main
           draft: false
